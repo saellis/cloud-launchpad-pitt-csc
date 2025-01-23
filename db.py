@@ -22,6 +22,7 @@ class TodoDBClient:
     def insert_todo(self, todo: str) -> int:
         id = None
         with sqlite3.connect(self.db_file) as conn:
+            # Due to GCP using an old, old version of sqlite3, we can't use the `RETURNING` syntax :(
             # id = conn.execute("INSERT INTO todo_list (todo) VALUES (?) RETURNING id;", (todo,)).fetchall()[0][0]
             conn.execute("INSERT INTO todo_list (todo) VALUES (?);", (todo,))
             id = conn.execute("SELECT * FROM todo_list ORDER BY id DESC;").fetchall()[0][0]
