@@ -1,8 +1,0 @@
-[project]
-name = "backend-dev-launchpad-pitt-csc"
-version = "0.1.0"
-description = "Add your description here"
-readme = "README.md"
-dependencies = [
-    "flask>=3.1.0",
-]
